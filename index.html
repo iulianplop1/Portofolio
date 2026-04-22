@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iulian Plop | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">Iulian.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#cv">CV</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1 class="hero-title">Iulian Plop.</h1>
+            <p class="hero-subtitle">Software Engineering Student.</p>
+            <p class="hero-description">Creating software app solutions for my daily problems and building impactful personal projects.</p>
+            <a href="#projects" class="cta-button">Explore My Work &darr;</a>
+        </div>
+        <div class="hero-bg-element"></div>
+    </section>
+
+    <!-- Showcase 1: 3D Vertical Carousel -->
+    <section class="showcase-section" id="projects">
+        <div class="carousel-scene">
+            <div class="carousel-sticky">
+                <div class="spine"></div>
+                <div class="carousel-ring" id="carouselRing">
+                    <!-- Cards injected via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interlude -->
+    <section class="interlude-section">
+        <h2 class="interlude-text">"Every line of code is an opportunity to solve a problem and create something beautiful."</h2>
+    </section>
+
+    <!-- Outro: Fullscreen to Grid (Scroll Driven) -->
+    <section class="showcase-section" id="showcase-3">
+        <div class="grid-scene">
+            <div class="grid-scene-sticky">
+                <div class="media-grid-scroll" id="scrollGrid">
+                    <div class="media-panel panel-1"><img src="screenshots/HackatonProject-showcase3.png" alt="Hackaton Project"></div>
+                    <div class="media-panel panel-2 active-center">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" class="hero-me-img" alt="Iulian Plop">
+                        <div class="hero-me-text">
+                            <h2>Iulian Plop</h2>
+                            <p class="hero-subtitle-text">Software Engineering Student</p>
+                            <p class="outro-subtitle">The software engineer you're looking for.</p>
+                        </div>
+                    </div>
+                    <div class="media-panel panel-3"><img src="screenshots/Quotes-showcase3.png" alt="Quotes"></div>
+                    <div class="media-panel panel-4"><img src="screenshots/Receipts-showcase3.png" alt="Receipts"></div>
+                    <div class="media-panel panel-5"><img src="screenshots/Sep project- showcase3.png" alt="SEP Project"></div>
+                    <div class="media-panel panel-6"><img src="screenshots/outfitt-showcase3.png" alt="Outfitt"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: CV -->
+    <section class="cv-section" id="cv">
+        <div class="cv-content">
+            <h2>Background & Skills</h2>
+            <div class="cv-grid">
+                
+                <div class="cv-column">
+                    <h3>Education</h3>
+                    <div class="cv-item">
+                        <h4>VIA University College, Horsens</h4>
+                        <span class="cv-date">01/09/2025 – CURRENT</span>
+                        <p>Bachelor's Degree in Software Engineering</p>
+                    </div>
+
+                    <h3 style="margin-top:40px;">Languages</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;"><strong>Romanian</strong> (Native)</p>
+                    <p style="color: var(--text-muted);">English (C2) &bull; Danish (A2) &bull; French (C1)</p>
+
+                    <h3 style="margin-top:40px;">Technical Skills</h3>
+                    <div class="tags">
+                        <span>Python</span><span>C++</span><span>JavaScript</span><span>HTML/CSS</span><span>React</span><span>MongoDB</span><span>SQL</span>
+                    </div>
+                </div>
+
+                <div class="cv-column">
+                    <h3>Key Strengths</h3>
+                    <ul class="strengths-list">
+                        <li><strong>Technical Innovation:</strong> Proven ability to develop complex software solutions from concept to deployment.</li>
+                        <li><strong>Problem-Solving:</strong> Strong analytical thinking demonstrated through programming competitions and technical projects.</li>
+                        <li><strong>Continuous Learning:</strong> Actively pursuing new technologies and maintaining industry certifications.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Detail Overlay (Case Study) -->
+    <div class="project-overlay" id="projectOverlay">
+        <div class="overlay-nav">
+            <button class="close-overlay">&larr; Back to Portfolio</button>
+        </div>
+        <div class="project-detail-hero" id="overlayHero"></div>
+        <div class="project-detail-content">
+            <div class="detail-header">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+                    <div>
+                        <span class="tag" id="overlayTag" style="margin-bottom: 16px;">Tag</span>
+                        <h2 id="overlayTitle" style="margin-bottom: 0;">Project Title</h2>
+                    </div>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" id="overlayLive" target="_blank" class="live-btn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            Live Demo
+                        </a>
+                        <a href="#" id="overlayGithub" target="_blank" class="github-btn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="detail-meta">
+                    <div class="meta-item">
+                        <strong>Role</strong>
+                        <span id="overlayRole">Developer</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Tech Stack</strong>
+                        <span id="overlayTech">React, Node.js</span>
+                    </div>
+                </div>
+                <p id="overlayDesc">Project description goes here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
