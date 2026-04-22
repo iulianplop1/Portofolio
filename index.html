@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iulian Plop | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +28,10 @@
     <!-- Section 1: Hero -->
     <section class="hero" id="about">
         <div class="hero-content">
-            <h1 class="hero-title">Iulian Plop.</h1>
-            <p class="hero-subtitle">Software Engineering Student.</p>
-            <p class="hero-description">Creating software app solutions for my daily problems and building impactful personal projects.</p>
-            <a href="#projects" class="cta-button">Explore My Work &darr;</a>
+            <h1 class="hero-title load-hidden">Iulian Plop.</h1>
+            <p class="hero-subtitle load-hidden">Software Engineering Student.</p>
+            <p class="hero-description load-hidden">Creating software app solutions for my daily problems and building impactful personal projects.</p>
+            <a href="#projects" class="cta-button load-hidden">Explore My Work &darr;</a>
         </div>
         <div class="hero-bg-element"></div>
     </section>
@@ -148,6 +149,16 @@
                     </div>
                 </div>
                 <p id="overlayDesc">Project description goes here.</p>
+            </div>
+            <div class="project-nav">
+                <button class="project-nav-btn prev-project" id="prevProject">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span id="prevProjectName">Previous</span>
+                </button>
+                <button class="project-nav-btn next-project" id="nextProject">
+                    <span id="nextProjectName">Next</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                </button>
             </div>
         </div>
     </div>

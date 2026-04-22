@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // --- Page Load Animation ---
+    gsap.to('.load-hidden', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.15,
+        delay: 0.3
+    });
+
     const projects = [
         { title: "VIACompass", desc: "Interactive campus map with real-time room availability.", tag: "Web App", image: "screenshots/VIACompass-showcase1.png", imageWide: "screenshots/HackatonProject-showcase3.png", github: "https://github.com/iulianplop1/VIA-ProjectMap", live: "https://iulianplop1.github.io/VIA-ProjectMap/" },
         { title: "Receipts", desc: "AI-powered budgeting app with receipt scanning and voice input.", tag: "React / AI", image: "screenshots/Receipts-showcase1.png", imageWide: "screenshots/Receipts-showcase3.png", github: "https://github.com/iulianplop1/Receipts", live: "https://iulianplop1.github.io/Receipts/" },
@@ -147,8 +157,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlayRole = document.getElementById('overlayRole');
     const overlayTech = document.getElementById('overlayTech');
     const closeBtn = document.querySelector('.close-overlay');
+    const prevBtn = document.getElementById('prevProject');
+    const nextBtn = document.getElementById('nextProject');
+    const prevName = document.getElementById('prevProjectName');
+    const nextName = document.getElementById('nextProjectName');
+    let currentProjectIndex = 0;
 
     function openOverlay(proj) {
+        currentProjectIndex = projects.indexOf(proj);
+        populateOverlay(proj);
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        overlay.scrollTop = 0;
+    }
+
+    function populateOverlay(proj) {
         overlayTitle.textContent = proj.title;
         overlayDesc.textContent = proj.desc;
         if(overlayTag) overlayTag.textContent = proj.tag;
@@ -168,13 +191,25 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const heroImg = proj.imageWide ? proj.imageWide : proj.image;
         overlayHero.style.backgroundImage = `url('${heroImg}')`;
-        
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Reset scroll position
-        overlay.scrollTop = 0;
+
+        // Update next/prev labels
+        const prevIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+        const nextIndex = (currentProjectIndex + 1) % projects.length;
+        prevName.textContent = projects[prevIndex].title;
+        nextName.textContent = projects[nextIndex].title;
     }
+
+    prevBtn.addEventListener('click', () => {
+        currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+        populateOverlay(projects[currentProjectIndex]);
+        overlay.scrollTop = 0;
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+        populateOverlay(projects[currentProjectIndex]);
+        overlay.scrollTop = 0;
+    });
 
     closeBtn.addEventListener('click', () => {
         overlay.classList.remove('active');
