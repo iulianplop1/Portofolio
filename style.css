@@ -97,18 +97,18 @@ h1, h2, h3, .logo { font-weight: 600; letter-spacing: -0.02em; }
 
 
 /* Project Detail Overlay */
-.project-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1), transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); overflow-y: auto; overflow-x: hidden; transform: translateY(100vh); }
+.project-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1), transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); overflow: hidden; transform: translateY(100vh); display: flex; flex-direction: column; }
 .project-overlay.active { opacity: 1; pointer-events: all; transform: translateY(0); }
 .overlay-nav { position: fixed; top: 30px; left: 40px; z-index: 1001; }
 .close-overlay { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.1); font-size: 1rem; font-weight: 500; cursor: pointer; padding: 12px 24px; border-radius: 999px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); color: var(--text-main); }
 .close-overlay:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
 
-/* Project Detail Layout */
-.project-detail-hero { width: 100%; height: 75vh; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; }
+/* Project Detail Layout - Single Viewport */
+.project-detail-hero { width: 100%; height: 45vh; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
 .project-detail-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, var(--bg-color) 0%, transparent 100%); }
-.project-detail-content { max-width: 900px; margin: -100px auto 100px; position: relative; z-index: 10; padding: 0 40px; }
-.detail-header { margin-bottom: 40px; }
-.detail-header h2 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
+.project-detail-content { max-width: 900px; margin: -60px auto 0; position: relative; z-index: 10; padding: 0 40px; flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+.detail-header { margin-bottom: 24px; }
+.detail-header h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 12px; font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
 
 .github-btn { display: inline-flex; align-items: center; gap: 10px; background: #24292e; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 999px; font-weight: 500; font-size: 0.95rem; transition: transform 0.2s, background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 .github-btn:hover { background: #000; transform: translateY(-2px); }
@@ -116,9 +116,9 @@ h1, h2, h3, .logo { font-weight: 600; letter-spacing: -0.02em; }
 .live-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 999px; font-weight: 500; font-size: 0.95rem; transition: transform 0.2s, background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 .live-btn:hover { background: #000; transform: translateY(-2px); }
 
-.detail-body { background: #fff; padding: 60px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); }
+.detail-body { background: #fff; padding: 30px 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); }
 
-.detail-meta { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+.detail-meta { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
 .meta-item { display: flex; flex-direction: column; gap: 6px; }
 .meta-item strong { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-main); }
 .meta-item span { font-size: 1.05rem; color: var(--text-muted); }

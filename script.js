@@ -215,4 +215,19 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.classList.remove('active');
         document.body.style.overflow = 'auto';
     });
+
+    // --- Keyboard Navigation ---
+    document.addEventListener('keydown', (e) => {
+        if (!overlay.classList.contains('active')) return;
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        } else if (e.key === 'ArrowLeft') {
+            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+            populateOverlay(projects[currentProjectIndex]);
+        } else if (e.key === 'ArrowRight') {
+            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+            populateOverlay(projects[currentProjectIndex]);
+        }
+    });
 });
