@@ -39,6 +39,53 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.3
     });
 
+    // --- Custom Cursor ---
+    const cursor = document.getElementById('customCursor');
+    if (cursor && window.matchMedia("(pointer: fine)").matches) {
+        let cursorX = window.innerWidth / 2;
+        let cursorY = window.innerHeight / 2;
+        let mouseX = cursorX;
+        let mouseY = cursorY;
+
+        document.addEventListener('mousemove', (e) => {
+            // Increased offset to 25px so it sits further behind
+            mouseX = e.clientX + 25;
+            mouseY = e.clientY + 25;
+        });
+
+        gsap.ticker.add(() => {
+            // Decreased the lerp factor from 0.2 to 0.08 for a much looser, liquid lag
+            cursorX += (mouseX - cursorX) * 0.08;
+            cursorY += (mouseY - cursorY) * 0.08;
+            gsap.set(cursor, { x: cursorX, y: cursorY });
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .project-card, .paper-plane, .project-nav-btn')) {
+                cursor.classList.add('hover');
+            }
+        });
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a, button, .project-card, .paper-plane, .project-nav-btn')) {
+                cursor.classList.remove('hover');
+            }
+        });
+    }
+
+    // --- Magnetic Buttons ---
+    const magneticElements = document.querySelectorAll('.live-btn, .github-btn, .close-overlay, .project-nav-btn');
+    magneticElements.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: 'power2.out' });
+        });
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
+        });
+    });
+
     const projects = [
         { title: "VIACompass", desc: "Interactive campus map with real-time room availability.", tag: "Web App", image: "screenshots/VIACompass-showcase1.png", imageWide: "screenshots/HackatonProject-showcase3.png", github: "https://github.com/iulianplop1/VIA-ProjectMap", live: "https://iulianplop1.github.io/VIA-ProjectMap/" },
         { title: "Receipts", desc: "AI-powered budgeting app with receipt scanning and voice input.", tag: "React / AI", image: "screenshots/Receipts-showcase1.png", imageWide: "screenshots/Receipts-showcase3.png", github: "https://github.com/iulianplop1/Receipts", live: "https://iulianplop1.github.io/Receipts/" },
