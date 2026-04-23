@@ -4,11 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Paper Plane Scroll Animation ---
     const plane = document.getElementById('paperPlane');
     if (plane) {
-        const pathSelector = window.innerWidth > 1920 ? "#path2K" : (window.innerWidth > 768 ? "#pathLaptop" : "#pathMobile");
+        // Select path based on resolution
+        let pathId = "#flightPath2k";
+        const w = window.innerWidth;
+        if (w >= 3000) pathId = "#flightPath4k";
+        else if (w >= 1800) pathId = "#flightPath2k";
+        else if (w >= 1000) pathId = "#flightPath1k";
+        else pathId = "#flightPathMobile";
+
         gsap.to(plane, {
             motionPath: {
-                path: pathSelector,
-                align: pathSelector,
+                path: pathId,
+                align: pathId,
                 alignOrigin: [0.5, 0.5],
                 autoRotate: true
             },
