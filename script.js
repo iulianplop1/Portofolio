@@ -1,5 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+    // --- Paper Plane Scroll Animation ---
+    const plane = document.getElementById('paperPlane');
+    if (plane) {
+        const pathSelector = window.innerWidth > 1920 ? "#path2K" : (window.innerWidth > 768 ? "#pathLaptop" : "#pathMobile");
+        gsap.to(plane, {
+            motionPath: {
+                path: pathSelector,
+                align: pathSelector,
+                alignOrigin: [0.5, 0.5],
+                autoRotate: true
+            },
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1
+            }
+        });
+    }
 
     // --- Page Load Animation ---
     gsap.to('.load-hidden', {
