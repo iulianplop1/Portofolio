@@ -113,7 +113,7 @@ h1, h2, h3, .logo { font-weight: 600; letter-spacing: -0.02em; }
 /* Project Detail Layout - Single Viewport */
 .project-detail-hero { width: 100%; height: 45vh; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
 .project-detail-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, var(--bg-color) 0%, transparent 100%); }
-.project-detail-content { max-width: 900px; margin: -60px auto 0; position: relative; z-index: 10; padding: 0 40px; flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+.project-detail-content { max-width: 900px; margin: -60px auto 0; position: relative; z-index: 10; padding: 0 40px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .detail-header { margin-bottom: 24px; }
 .detail-header h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 12px; font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
 
@@ -250,4 +250,17 @@ h1, h2, h3, .logo { font-weight: 600; letter-spacing: -0.02em; }
     .media-grid-scroll .panel-4 { grid-area: 3 / 1 / 4 / 2; }
     .media-grid-scroll .panel-5 { grid-area: 3 / 2 / 4 / 3; }
     .media-grid-scroll .panel-6 { display: none; }
+}
+
+/* High Resolution Optimizations (2K+) */
+@media (min-width: 2000px) {
+    .project-detail-hero { height: 55vh; }
+    .project-detail-content { max-width: 1200px; margin-top: -100px; }
+    .detail-header h2 { font-size: 4.5rem; }
+    .detail-body { padding: 50px 60px; border-radius: 32px; }
+    .detail-header .tag { font-size: 1.1rem; padding: 8px 18px; }
+    .github-btn, .live-btn { padding: 16px 32px; font-size: 1.1rem; }
+    .meta-item strong { font-size: 1rem; }
+    .meta-item span { font-size: 1.3rem; }
+    .detail-description { font-size: 1.25rem; line-height: 1.7; }
 }
