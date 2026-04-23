@@ -17,32 +17,6 @@ h1, h2, h3, .logo { font-weight: 600; letter-spacing: -0.02em; }
 /* Page Load Animation */
 .load-hidden { opacity: 0; transform: translateY(30px); }
 
-/* Custom Cursor Follower - Liquid Blob */
-@media (pointer: fine) {
-    .custom-cursor {
-        position: fixed; top: 0; left: 0; width: 24px; height: 24px; background: var(--text-main); 
-        pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); 
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        animation: blobMorph 3s ease-in-out infinite;
-        transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border 0.3s ease;
-    }
-    .custom-cursor.hover {
-        width: 60px; height: 60px; background: rgba(26, 26, 26, 0.08); border: 1px solid rgba(26, 26, 26, 0.3); backdrop-filter: blur(2px);
-        animation: blobMorphHover 4s ease-in-out infinite;
-    }
-    
-    @keyframes blobMorph {
-        0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-        100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    }
-    @keyframes blobMorphHover {
-        0% { border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%; }
-        50% { border-radius: 40% 60% 50% 40% / 60% 50% 40% 60%; }
-        100% { border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%; }
-    }
-}
-
 /* Paper Plane */
 .flight-path-svg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: -1; }
 .paper-plane { position: fixed; z-index: 99; color: var(--text-muted); opacity: 0.4; cursor: pointer; text-decoration: none; transition: opacity 0.3s, color 0.3s; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08)); }

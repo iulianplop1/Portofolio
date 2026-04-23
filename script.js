@@ -39,39 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.3
     });
 
-    // --- Custom Cursor ---
-    const cursor = document.getElementById('customCursor');
-    if (cursor && window.matchMedia("(pointer: fine)").matches) {
-        let cursorX = window.innerWidth / 2;
-        let cursorY = window.innerHeight / 2;
-        let mouseX = cursorX;
-        let mouseY = cursorY;
-
-        document.addEventListener('mousemove', (e) => {
-            // Increased offset to 25px so it sits further behind
-            mouseX = e.clientX + 25;
-            mouseY = e.clientY + 25;
-        });
-
-        gsap.ticker.add(() => {
-            // Decreased the lerp factor from 0.2 to 0.08 for a much looser, liquid lag
-            cursorX += (mouseX - cursorX) * 0.08;
-            cursorY += (mouseY - cursorY) * 0.08;
-            gsap.set(cursor, { x: cursorX, y: cursorY });
-        });
-
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('a, button, .project-card, .paper-plane, .project-nav-btn')) {
-                cursor.classList.add('hover');
-            }
-        });
-        document.addEventListener('mouseout', (e) => {
-            if (e.target.closest('a, button, .project-card, .paper-plane, .project-nav-btn')) {
-                cursor.classList.remove('hover');
-            }
-        });
-    }
-
     // --- Magnetic Buttons ---
     const magneticElements = document.querySelectorAll('.live-btn, .github-btn, .close-overlay, .project-nav-btn');
     magneticElements.forEach(btn => {
